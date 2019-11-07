@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>336</width>
+    <width>620</width>
     <height>114</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>310</width>
+      <width>601</width>
       <height>61</height>
      </rect>
     </property>
@@ -40,17 +40,12 @@
        </item>
        <item>
         <property name="text">
-         <string>New Item</string>
+         <string>Вывод формулы вещества по отношению масс элементов в данном веществе</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>New Item</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>New Item</string>
+         <string>Вывод формулы вещества по массовым долям элементов</string>
         </property>
        </item>
       </widget>
@@ -63,8 +58,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>336</width>
-     <height>21</height>
+     <width>620</width>
+     <height>25</height>
     </rect>
    </property>
   </widget>

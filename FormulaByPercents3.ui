@@ -1,0 +1,1107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>837</width>
+    <height>363</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>837</width>
+    <height>363</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QPushButton" name="next">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>300</y>
+     <width>90</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Далее</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>70</y>
+     <width>680</width>
+     <height>290</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="4">
+     <widget class="QPushButton" name="_N">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>N   (14)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="1">
+     <widget class="QPushButton" name="_Ra">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 174, 119)</string>
+      </property>
+      <property name="text">
+       <string>Ra   (226)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QPushButton" name="_Rb">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 174, 119)</string>
+      </property>
+      <property name="text">
+       <string>Rb   (85)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="8">
+     <widget class="QPushButton" name="_Rh">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Rh   (103)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="6">
+     <widget class="QPushButton" name="_I">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>I   (127)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="8">
+     <widget class="QPushButton" name="_Co">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Co   (59)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="5">
+     <widget class="QPushButton" name="_Po">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Po   (209)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="4">
+     <widget class="QPushButton" name="_V">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>V   (51)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="2">
+     <widget class="QPushButton" name="_Tl">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Tl   (204)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="7">
+     <widget class="QPushButton" name="_Hs">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Hs   (265)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="9">
+     <widget class="QPushButton" name="_Ni">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Ni   (59)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="6">
+     <widget class="QPushButton" name="_Br">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Br   (80)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="3">
+     <widget class="QPushButton" name="_Hf">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Hf   (178)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="7">
+     <widget class="QPushButton" name="_Fe">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Fe   (56)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="9">
+     <widget class="QPushButton" name="_Pt">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Pt   (195)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QPushButton" name="_Sc">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Sc   (45)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="6">
+     <widget class="QPushButton" name="_Bh">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Bh   (262)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QPushButton" name="_Al">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Al   (27)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="2">
+     <widget class="QPushButton" name="_In">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>In   (115)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="5">
+     <widget class="QPushButton" name="_Te">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Te   (128)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="6">
+     <widget class="QPushButton" name="_F">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>F   (19)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="_B">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>B   (11)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QPushButton" name="_Ba">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 174, 119)</string>
+      </property>
+      <property name="text">
+       <string>Ba   (137)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="5">
+     <widget class="QPushButton" name="_Sg">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Sg   (263)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QPushButton" name="_Cs">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 174, 119)</string>
+      </property>
+      <property name="text">
+       <string>Cs   (133)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="7">
+     <widget class="QPushButton" name="_Os">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Os   (190)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="4">
+     <widget class="QPushButton" name="_Nb">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Nb   (93)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="3">
+     <widget class="QPushButton" name="_Ge">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Ge   (73)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="_Mg">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 174, 119)</string>
+      </property>
+      <property name="text">
+       <string>Mg   (24)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2">
+     <widget class="QPushButton" name="_Y">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Y   (89)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="8">
+     <widget class="QPushButton" name="_Mt">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Mt   (266)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="_Be">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 174, 119)</string>
+      </property>
+      <property name="text">
+       <string>Be   (9)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="5">
+     <widget class="QPushButton" name="_W">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>W   (184)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QPushButton" name="_Hg">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Hg   (201)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="8">
+     <widget class="QPushButton" name="_Ir">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Ir   (192)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="6">
+     <widget class="QPushButton" name="_Cl">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Cl   (35)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="9">
+     <widget class="QPushButton" name="_Ds">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Ds   (269)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="4">
+     <widget class="QPushButton" name="_As">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>As   (75)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="2">
+     <widget class="QPushButton" name="_Ac">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Ac   (227)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QPushButton" name="_Fr">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 174, 119)</string>
+      </property>
+      <property name="text">
+       <string>Fr   (223)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="4">
+     <widget class="QPushButton" name="_P">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>P   (31)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="4">
+     <widget class="QPushButton" name="_Db">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Db   (262)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="6">
+     <widget class="QPushButton" name="_Tc">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Tc   (99)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="3">
+     <widget class="QPushButton" name="_Sn">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Sn   (119)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="3">
+     <widget class="QPushButton" name="_Ti">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Ti   (48)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QPushButton" name="_Au">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Au   (197)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2">
+     <widget class="QPushButton" name="_Ga">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Ga   (70)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="_Na">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 174, 119)</string>
+      </property>
+      <property name="text">
+       <string>Na   (23)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="2">
+     <widget class="QPushButton" name="_La">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>La   (139)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="5">
+     <widget class="QPushButton" name="_O">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>O   (16)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QPushButton" name="_Cd">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Cd   (112)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="5">
+     <widget class="QPushButton" name="_Se">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Se   (79)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QPushButton" name="_Ag">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Ag   (108)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="6">
+     <widget class="QPushButton" name="_Mn">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Mn   (55)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="4">
+     <widget class="QPushButton" name="_Ta">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Ta   (181)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="6">
+     <widget class="QPushButton" name="_At">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>At   (210)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="3">
+     <widget class="QPushButton" name="_Si">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Si   (28)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPushButton" name="_Ca">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 174, 119)</string>
+      </property>
+      <property name="text">
+       <string>Ca   (40)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="3">
+     <widget class="QPushButton" name="_Zr">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Zr   (91)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="3">
+     <widget class="QPushButton" name="_Pb">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Pb   (207)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="4">
+     <widget class="QPushButton" name="_Sb">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Sb   (122)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="3">
+     <widget class="QPushButton" name="_Rf">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Rf   (261)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QPushButton" name="_Cu">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Cu   (64)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="_H">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 174, 119)</string>
+      </property>
+      <property name="text">
+       <string>H   (1)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="9">
+     <widget class="QPushButton" name="_Pd">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Pd   (106)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="7">
+     <widget class="QPushButton" name="_Ru">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Ru   (101)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QPushButton" name="_Sr">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 174, 119)</string>
+      </property>
+      <property name="text">
+       <string>Sr   (88)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="6">
+     <widget class="QPushButton" name="_Re">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Re   (186)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QPushButton" name="_Zn">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Zn   (65)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="5">
+     <widget class="QPushButton" name="_Cr">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Cr   (52)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="5">
+     <widget class="QPushButton" name="_Mo">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(101, 167, 181)</string>
+      </property>
+      <property name="text">
+       <string>Mo   (96)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="4">
+     <widget class="QPushButton" name="_Bi">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Bi   (209)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QPushButton" name="_C">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>C   (12)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="_K">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 174, 119)</string>
+      </property>
+      <property name="text">
+       <string>K   (39)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="_Li">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 174, 119)</string>
+      </property>
+      <property name="text">
+       <string>Li   (7)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="5">
+     <widget class="QPushButton" name="_S">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>S   (32)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="6">
+     <widget class="QPushButton" name="_He">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 174, 119)</string>
+      </property>
+      <property name="text">
+       <string>He   (4)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="9">
+     <widget class="QPushButton" name="_Ne">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Ne   (20)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="9">
+     <widget class="QPushButton" name="_Ar">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Ar   (40)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="9">
+     <widget class="QPushButton" name="_Kr">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Kr   (84)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="9">
+     <widget class="QPushButton" name="_Xe">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Xe   (131)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="9">
+     <widget class="QPushButton" name="_Rn">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127)</string>
+      </property>
+      <property name="text">
+       <string>Rn   (222)</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>171</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>w(</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pb1">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>) = </string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pb2">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string> %</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>10</y>
+     <width>171</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>w(</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pb3">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>) = </string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pb4">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string> %</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>10</y>
+     <width>171</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string>w(</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pb5">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_8">
+      <property name="text">
+       <string>) = </string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pb6">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_9">
+      <property name="text">
+       <string> %</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>70</y>
+     <width>110</width>
+     <height>140</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="2" column="2">
+     <widget class="QPushButton" name="three">
+      <property name="text">
+       <string>3</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="two">
+      <property name="text">
+       <string>2</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="nine">
+      <property name="text">
+       <string>9</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="seven">
+      <property name="text">
+       <string>7</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="one">
+      <property name="text">
+       <string>1</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="six">
+      <property name="text">
+       <string>6</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="four">
+      <property name="text">
+       <string>4</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="eight">
+      <property name="text">
+       <string>8</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPushButton" name="zero">
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="five">
+      <property name="text">
+       <string>5</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QPushButton" name="remove">
+      <property name="text">
+       <string>&lt;-</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="point">
+      <property name="text">
+       <string>.</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
