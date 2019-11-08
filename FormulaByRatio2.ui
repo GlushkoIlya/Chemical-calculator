@@ -50,7 +50,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pb1">
       <property name="text">
        <string/>
       </property>
@@ -64,7 +64,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="pb3">
       <property name="text">
        <string/>
       </property>
@@ -78,7 +78,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="pb2">
       <property name="text">
        <string/>
       </property>
@@ -92,7 +92,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="pb4">
       <property name="text">
        <string/>
       </property>
@@ -105,7 +105,7 @@
     <rect>
      <x>10</x>
      <y>70</y>
-     <width>690</width>
+     <width>700</width>
      <height>290</height>
     </rect>
    </property>
@@ -937,7 +937,7 @@
     <rect>
      <x>720</x>
      <y>70</y>
-     <width>100</width>
+     <width>110</width>
      <height>140</height>
     </rect>
    </property>
