@@ -3,7 +3,11 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QPushButton, QWidget, QLabel, \
     QMainWindow, QCheckBox, \
     QComboBox, QFileDialog, QTextEdit, QTextBrowser
-import faulthandler
+from PyQt5.QtGui import QPixmap
+import sqlite3
+
+
+# import faulthandler
 
 
 class Main(QMainWindow):
@@ -23,7 +27,99 @@ class Main(QMainWindow):
             self.nextWindow = FormulaByRatio()
         elif text == "Вывод формулы вещества по массовым долям элементов":
             self.nextWindow = FormulaByPercents()
+        elif text == "Таблица Менделеева":
+            self.nextWindow = Mend()
+        elif text == "История":
+            self.nextWindow = History()
         self.nextWindow.show()
+
+
+class History(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.btns = []
+        uic.loadUi('History.ui', self)
+        self.base = sqlite3.connect("history.db")
+        self.pb.clicked.connect(self.remove)
+        self.initUI()
+
+    def remove(self):
+        cur = self.base.cursor()
+        cur.execute("DELETE from History WHERE 1=1").fetchall()
+
+    def initUI(self):
+        cur = self.base.cursor()
+        result = cur.execute("Select * from History").fetchall()
+        print(result)
+        self.scrollArea.setWidgetResizable(True)
+        for i in range(len(result)):
+            btn = QPushButton(str(result[i][0]))
+            btn.setText(result[i][0])
+            self.scrollArea.setWidget(btn)
+            self.btns.append([btn, result[i]])
+        for i in self.btns:
+            if i[1][0] == 'Масса вещества':
+                sa = i[1][1]
+                j = 0
+                while chr(92) in sa:
+                    if ord(sa[j]) == 92:
+                        sa = sa[:j] + sa[j + 1:]
+                    j += 1
+                sa = sa[1:]
+                sa = sa[:-1]
+                sa = sa.split(', ')
+                for j in range(len(sa)):
+                    sa[j] = sa[j].split(': ')
+                    sa[j][0] = sa[j][0][1:]
+                    sa[j][0] = sa[j][0][:-1]
+                    sa[j][1] = int(sa[j][1])
+                self.nextWindow = AtomnayaMassaAnswer(sa)
+            elif i[1][0] == 'Вывод формулы вещества по отношению масс элементов в данном веществе':
+                sa = i[1][1]
+                sb = i[1][2]
+                sa = sa[1:]
+                sa = sa[:-1]
+                sb = sb[1:]
+                sb = sb[:-1]
+                sa = sa.split(', ')
+                sb = sb.split(', ')
+                for j in range(len(sa)):
+                    sa[j] = sa[j][1:]
+                    sa[j] = sa[j][:-1]
+                    sb[j] = sb[j][1:]
+                    sb[j] = sb[j][:-1]
+                self.nextWindow = FBRAns(sa, sb)
+            elif i[1][0] == 'Вывод формулы вещества по массовым долям элементов':
+                sa = i[1][1]
+                sb = i[1][2]
+                sa = sa[1:]
+                sa = sa[:-1]
+                sb = sb[1:]
+                sb = sb[:-1]
+                sa = sa.split(', ')
+                sb = sb.split(', ')
+                for j in range(len(sa)):
+                    sa[j] = sa[j][1:]
+                    sa[j] = sa[j][:-1]
+                    sb[j] = sb[j][1:]
+                    sb[j] = sb[j][:-1]
+                self.nextWindow = FBPAns(sa, sb)
+
+
+class Mend(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.initUI()
+
+    def initUI(self):
+        SCREEN_SIZE = [1200, 800]
+        self.setGeometry(1200, 800, *SCREEN_SIZE)
+        self.setWindowTitle('Таблица Менделеева')
+        self.pixmap = QPixmap('Mend.jpg')
+        self.image = QLabel(self)
+        self.image.move(0, 0)
+        self.image.resize(1200, 800)
+        self.image.setPixmap(self.pixmap)
 
 
 class AtomnayaMassa(QWidget):
@@ -256,6 +352,8 @@ class AtomnayaMassaAnswer(QWidget):
                      'Cr': [52], 'Mo': [96], 'Bi': [209], 'C': [12],
                      'K': [39], 'He': [4],
                      'Li': [7], 'S': [32]}
+        self.base = sqlite3.connect("history.db")
+        cur = self.base.cursor()
         super().__init__()
         uic.loadUi('AMAns.ui', self)
         a = {}
@@ -271,6 +369,7 @@ class AtomnayaMassaAnswer(QWidget):
                 else:
                     a[arg[i][0]] += arg[i][1]
         self.arg = a
+        cur.execute("INSERT INTO History(operation, input1) VALUES('Масса вещества', ?)", (str(self.arg),)).fetchall()
         self.s = s
         self.initUI()
 
@@ -489,13 +588,25 @@ class FormulaByRatio2(QWidget):
         if self.bt2 != ' ' and len(self.bt2.text()) < 5:
             bt = self.sender()
             text = str(bt.text())
-            self.bt2.setText(self.bt2.text() + text)
+            if (
+                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                pass
+            elif text == '.':
+                self.bt2.setText(self.bt2.text() + text)
+            else:
+                if float(self.bt2.text() + text) == int(
+                        self.bt2.text() + text):
+                    self.bt2.setText(str(int(self.bt2.text() + text)))
+                else:
+                    self.bt2.setText(str(float(self.bt2.text() + text)))
 
     def do_next(self):
         self.cifr = [str(self.pb2.text()), str(self.pb4.text())]
-        if '' not in self.stuff and '' not in self.cifr and '0' not in self.cifr:
-            self.nextWindow = FBRAns(self.stuff, self.cifr)
-            self.nextWindow.show()
+        if '' not in self.cifr:
+            cifr = list(map(lambda x: float(x), self.cifr))
+            if '' not in self.stuff and 0 not in cifr:
+                self.nextWindow = FBRAns(self.stuff, self.cifr)
+                self.nextWindow.show()
 
     def add_element(self):
         if self.bt1 != ' ':
@@ -635,14 +746,28 @@ class FormulaByRatio3(QWidget):
         if self.bt2 != ' ' and len(self.bt2.text()) < 5:
             bt = self.sender()
             text = str(bt.text())
-            self.bt2.setText(self.bt2.text() + text)
+            if (
+                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                pass
+            elif text == '.':
+                self.bt2.setText(self.bt2.text() + text)
+            else:
+                if '.' in self.bt2.text():
+                    self.bt2.setText(self.bt2.text() + text)
+                elif float(self.bt2.text() + text) == int(
+                        self.bt2.text() + text):
+                    self.bt2.setText(str(int(self.bt2.text() + text)))
+                else:
+                    self.bt2.setText(str(float(self.bt2.text() + text)))
 
     def do_next(self):
         self.cifr = [str(self.pb2.text()), str(self.pb4.text()),
                      str(self.pb6.text())]
-        if '' not in self.stuff and '' not in self.cifr and '0' not in self.cifr:
-            self.nextWindow = FBRAns(self.stuff, self.cifr)
-            self.nextWindow.show()
+        if '' not in self.cifr:
+            cifr = list(map(lambda x: float(x), self.cifr))
+            if '' not in self.stuff and 0 not in cifr:
+                self.nextWindow = FBRAns(self.stuff, self.cifr)
+                self.nextWindow.show()
 
     def add_element(self):
         if self.bt1 != ' ':
@@ -786,14 +911,26 @@ class FormulaByRatio4(QWidget):
         if self.bt2 != ' ' and len(self.bt2.text()) < 5:
             bt = self.sender()
             text = str(bt.text())
-            self.bt2.setText(self.bt2.text() + text)
+            if (
+                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                pass
+            elif text == '.':
+                self.bt2.setText(self.bt2.text() + text)
+            else:
+                if float(self.bt2.text() + text) == int(
+                        self.bt2.text() + text):
+                    self.bt2.setText(str(int(self.bt2.text() + text)))
+                else:
+                    self.bt2.setText(str(float(self.bt2.text() + text)))
 
     def do_next(self):
         self.cifr = [str(self.pb2.text()), str(self.pb4.text()),
                      str(self.pb6.text()), str(self.pb8.text())]
-        if '' not in self.stuff and '' not in self.cifr and '0' not in self.cifr:
-            self.nextWindow = FBRAns(self.stuff, self.cifr)
-            self.nextWindow.show()
+        if '' not in self.cifr:
+            cifr = list(map(lambda x: float(x), self.cifr))
+            if '' not in self.stuff and 0 not in cifr:
+                self.nextWindow = FBRAns(self.stuff, self.cifr)
+                self.nextWindow.show()
 
     def add_element(self):
         if self.bt1 != ' ':
@@ -941,15 +1078,27 @@ class FormulaByRatio5(QWidget):
         if self.bt2 != ' ' and len(self.bt2.text()) < 5:
             bt = self.sender()
             text = str(bt.text())
-            self.bt2.setText(self.bt2.text() + text)
+            if (
+                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                pass
+            elif text == '.':
+                self.bt2.setText(self.bt2.text() + text)
+            else:
+                if float(self.bt2.text() + text) == int(
+                        self.bt2.text() + text):
+                    self.bt2.setText(str(int(self.bt2.text() + text)))
+                else:
+                    self.bt2.setText(str(float(self.bt2.text() + text)))
 
     def do_next(self):
         self.cifr = [str(self.pb2.text()), str(self.pb4.text()),
                      str(self.pb6.text()), str(self.pb8.text()),
                      str(self.pb10.text())]
-        if '' not in self.stuff and '' not in self.cifr and '0' not in self.cifr:
-            self.nextWindow = FBRAns(self.stuff, self.cifr)
-            self.nextWindow.show()
+        if '' not in self.cifr:
+            cifr = list(map(lambda x: float(x), self.cifr))
+            if '' not in self.stuff and 0 not in cifr:
+                self.nextWindow = FBRAns(self.stuff, self.cifr)
+                self.nextWindow.show()
 
     def add_element(self):
         if self.bt1 != ' ':
@@ -998,6 +1147,7 @@ class FBRAns(QWidget):
                      'Cr': [52], 'Mo': [96], 'Bi': [209], 'C': [12],
                      'K': [39], 'He': [4],
                      'Li': [7], 'S': [32]}
+        self.base = sqlite3.connect("history.db")
         self.ln = len(arg1)
         self.stuff = arg1
         self.cifr0 = arg2
@@ -1058,21 +1208,19 @@ class FBRAns(QWidget):
         self.tb1.setText(s0)
         self.tb2.setText(s1 + ' = ' + s2 + ' = ' + s3 + ' = ' + s4)
         ans = ''
-        v = False
-        r = 0
+        v = True
         for i in range(self.ln):
             if float(res[i] * 10 // 10) != res[i]:
-                r += 1
                 for j in range(1, 100):
                     if float(res[i] * j * 10 // 10) != res[i] * j:
                         pass
                     else:
                         for k in range(len(res)):
                             res[k] *= j
-                        v = True
                         break
-        if r == 0:
-            v = True
+        for i in range(self.ln):
+            if float(res[i] * 10 // 10) != res[i]:
+                v = False
         if not v:
             self.ans.setText('Калькулятор не может это посчитать')
         else:
@@ -1251,14 +1399,24 @@ class FormulaByPercents2(QWidget):
         if self.bt2 != ' ' and len(self.bt2.text()) < 5:
             bt = self.sender()
             text = str(bt.text())
-            self.bt2.setText(self.bt2.text() + text)
+            if (
+                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                pass
+            elif text == '.':
+                self.bt2.setText(self.bt2.text() + text)
+            else:
+                if float(self.bt2.text() + text) == int(
+                        self.bt2.text() + text):
+                    self.bt2.setText(str(int(self.bt2.text() + text)))
+                else:
+                    self.bt2.setText(str(float(self.bt2.text() + text)))
 
     def do_next(self):
         self.cifr = [str(self.pb2.text()), str(self.pb4.text())]
         if '' not in self.cifr:
-            cifr = list(map(lambda x: int(x), self.cifr))
+            cifr = list(map(lambda x: float(x), self.cifr))
             if '' not in self.stuff and sum(
-                    cifr) == 100 and '0' not in self.cifr:
+                    cifr) == 100 and 0 not in cifr:
                 self.nextWindow = FBPAns(self.stuff, self.cifr)
                 self.nextWindow.show()
 
@@ -1400,15 +1558,25 @@ class FormulaByPercents3(QWidget):
         if self.bt2 != ' ' and len(self.bt2.text()) < 5:
             bt = self.sender()
             text = str(bt.text())
-            self.bt2.setText(self.bt2.text() + text)
+            if (
+                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                pass
+            elif text == '.':
+                self.bt2.setText(self.bt2.text() + text)
+            else:
+                if float(self.bt2.text() + text) == int(
+                        self.bt2.text() + text):
+                    self.bt2.setText(str(int(self.bt2.text() + text)))
+                else:
+                    self.bt2.setText(str(float(self.bt2.text() + text)))
 
     def do_next(self):
         self.cifr = [str(self.pb2.text()), str(self.pb4.text()),
                      str(self.pb6.text())]
         if '' not in self.cifr:
-            cifr = list(map(lambda x: int(x), self.cifr))
+            cifr = list(map(lambda x: float(x), self.cifr))
             if '' not in self.stuff and sum(
-                    cifr) == 100 and '0' not in self.cifr:
+                    cifr) == 100 and 0 not in cifr:
                 self.nextWindow = FBPAns(self.stuff, self.cifr)
                 self.nextWindow.show()
 
@@ -1554,15 +1722,25 @@ class FormulaByPercents4(QWidget):
         if self.bt2 != ' ' and len(self.bt2.text()) < 5:
             bt = self.sender()
             text = str(bt.text())
-            self.bt2.setText(self.bt2.text() + text)
+            if (
+                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                pass
+            elif text == '.':
+                self.bt2.setText(self.bt2.text() + text)
+            else:
+                if float(self.bt2.text() + text) == int(
+                        self.bt2.text() + text):
+                    self.bt2.setText(str(int(self.bt2.text() + text)))
+                else:
+                    self.bt2.setText(str(float(self.bt2.text() + text)))
 
     def do_next(self):
         self.cifr = [str(self.pb2.text()), str(self.pb4.text()),
                      str(self.pb6.text()), str(self.pb8.text())]
         if '' not in self.cifr:
-            cifr = list(map(lambda x: int(x), self.cifr))
+            cifr = list(map(lambda x: float(x), self.cifr))
             if '' not in self.stuff and sum(
-                    cifr) == 100 and '0' not in self.cifr:
+                    cifr) == 100 and 0 not in cifr:
                 self.nextWindow = FBPAns(self.stuff, self.cifr)
                 self.nextWindow.show()
 
@@ -1712,16 +1890,26 @@ class FormulaByPercents5(QWidget):
         if self.bt2 != ' ' and len(self.bt2.text()) < 5:
             bt = self.sender()
             text = str(bt.text())
-            self.bt2.setText(self.bt2.text() + text)
+            if (
+                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                pass
+            elif text == '.':
+                self.bt2.setText(self.bt2.text() + text)
+            else:
+                if float(self.bt2.text() + text) == int(
+                        self.bt2.text() + text):
+                    self.bt2.setText(str(int(self.bt2.text() + text)))
+                else:
+                    self.bt2.setText(str(float(self.bt2.text() + text)))
 
     def do_next(self):
         self.cifr = [str(self.pb2.text()), str(self.pb4.text()),
                      str(self.pb6.text()), str(self.pb8.text()),
                      str(self.pb10.text())]
         if '' not in self.cifr:
-            cifr = list(map(lambda x: int(x), self.cifr))
+            cifr = list(map(lambda x: float(x), self.cifr))
             if '' not in self.stuff and sum(
-                    cifr) == 100 and '0' not in self.cifr:
+                    cifr) == 100 and 0 not in cifr:
                 self.nextWindow = FBPAns(self.stuff, self.cifr)
                 self.nextWindow.show()
 
@@ -1772,6 +1960,7 @@ class FBPAns(QWidget):
                      'Cr': [52], 'Mo': [96], 'Bi': [209], 'C': [12],
                      'K': [39], 'He': [4],
                      'Li': [7], 'S': [32]}
+        self.base = sqlite3.connect("history.db")
         self.ln = len(arg1)
         self.stuff = arg1
         self.cifr = arg2
@@ -1814,7 +2003,7 @@ class FBPAns(QWidget):
         self.tb1.setText(s0)
         self.tb2.setText(s1 + ' = ' + s2 + ' = ' + s3 + ' = ' + s4)
         ans = ''
-        v = False
+        v = True
         r = 0
         for i in range(self.ln):
             if float(res[i] * 10 // 10) != res[i]:
@@ -1825,10 +2014,10 @@ class FBPAns(QWidget):
                     else:
                         for k in range(len(res)):
                             res[k] *= j
-                        v = True
                         break
-        if r == 0:
-            v = True
+        for i in range(self.ln):
+            if float(res[i] * 10 // 10) != res[i]:
+                v = False
         if not v:
             self.ans.setText('Калькулятор не может это посчитать')
         else:
@@ -1863,7 +2052,7 @@ class FBPAns(QWidget):
             self.ans.setText(ans)
 
 
-faulthandler.enable()
+# faulthandler.enable()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
