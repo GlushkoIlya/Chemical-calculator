@@ -2,12 +2,11 @@ import sys
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QPushButton, QWidget, QLabel, \
     QMainWindow, QCheckBox, \
-    QComboBox, QFileDialog, QTextEdit, QTextBrowser
+    QComboBox, QFileDialog, QTextEdit, QTextBrowser, QScrollArea, QVBoxLayout
 from PyQt5.QtGui import QPixmap
 import sqlite3
 
-
-# import faulthandler
+import faulthandler
 
 
 class Main(QMainWindow):
@@ -37,73 +36,95 @@ class Main(QMainWindow):
 class History(QWidget):
     def __init__(self):
         super().__init__()
-        self.btns = []
+        self.btns = {}
         uic.loadUi('History.ui', self)
         self.base = sqlite3.connect("history.db")
-        self.pb.clicked.connect(self.remove)
         self.initUI()
+
+    def am(self):
+        sa = self.btns[self.sender()][1]
+        s = self.btns[self.sender()][2]
+        sa = sa[1:]
+        sa = sa[:-1]
+        sa = sa.split(', ')
+        for j in range(len(sa)):
+            sa[j] = sa[j].split(':')
+            sa[j][0] = sa[j][0][1:]
+            sa[j][0] = sa[j][0][:-1]
+            sa[j][1] = int(sa[j][1])
+        self.nextWindow = AtomnayaMassaAnswer(sa, s)
+        self.nextWindow.show()
+
+    def fbr(self):
+        sa = self.btns[self.sender()][1]
+        sb = self.btns[self.sender()][2]
+        sa = sa[1:]
+        sa = sa[:-1]
+        sb = sb[1:]
+        sb = sb[:-1]
+        sa = sa.split(', ')
+        sb = sb.split(', ')
+        for j in range(len(sa)):
+            sa[j] = sa[j][1:]
+            sa[j] = sa[j][:-1]
+            sb[j] = sb[j][1:]
+            sb[j] = sb[j][:-1]
+        self.nextWindow = FBRAns(sa, sb)
+        self.nextWindow.show()
+
+    def fbp(self):
+        sa = self.btns[self.sender()][1]
+        sb = self.btns[self.sender()][2]
+        sa = sa[1:]
+        sa = sa[:-1]
+        sb = sb[1:]
+        sb = sb[:-1]
+        sa = sa.split(', ')
+        sb = sb.split(', ')
+        for j in range(len(sa)):
+            sa[j] = sa[j][1:]
+            sa[j] = sa[j][:-1]
+            sb[j] = sb[j][1:]
+            sb[j] = sb[j][:-1]
+        self.nextWindow = FBRAns(sa, sb)
+        self.nextWindow.show()
 
     def remove(self):
         cur = self.base.cursor()
-        cur.execute("DELETE from History WHERE 1=1").fetchall()
+        cur.execute("DELETE from History")
+        self.base.commit()
 
     def initUI(self):
         cur = self.base.cursor()
         result = cur.execute("Select * from History").fetchall()
-        print(result)
+        self.pb.clicked.connect(self.remove)
         self.scrollArea.setWidgetResizable(True)
         for i in range(len(result)):
-            btn = QPushButton(str(result[i][0]))
+            btn = QPushButton(str(result[i][0]), self)
             btn.setText(result[i][0])
-            self.scrollArea.setWidget(btn)
-            self.btns.append([btn, result[i]])
-        for i in self.btns:
-            if i[1][0] == 'Масса вещества':
-                sa = i[1][1]
-                j = 0
-                while chr(92) in sa:
-                    if ord(sa[j]) == 92:
-                        sa = sa[:j] + sa[j + 1:]
-                    j += 1
-                sa = sa[1:]
-                sa = sa[:-1]
-                sa = sa.split(', ')
-                for j in range(len(sa)):
-                    sa[j] = sa[j].split(': ')
-                    sa[j][0] = sa[j][0][1:]
-                    sa[j][0] = sa[j][0][:-1]
-                    sa[j][1] = int(sa[j][1])
-                self.nextWindow = AtomnayaMassaAnswer(sa)
-            elif i[1][0] == 'Вывод формулы вещества по отношению масс элементов в данном веществе':
-                sa = i[1][1]
-                sb = i[1][2]
-                sa = sa[1:]
-                sa = sa[:-1]
-                sb = sb[1:]
-                sb = sb[:-1]
-                sa = sa.split(', ')
-                sb = sb.split(', ')
-                for j in range(len(sa)):
-                    sa[j] = sa[j][1:]
-                    sa[j] = sa[j][:-1]
-                    sb[j] = sb[j][1:]
-                    sb[j] = sb[j][:-1]
-                self.nextWindow = FBRAns(sa, sb)
-            elif i[1][0] == 'Вывод формулы вещества по массовым долям элементов':
-                sa = i[1][1]
-                sb = i[1][2]
-                sa = sa[1:]
-                sa = sa[:-1]
-                sb = sb[1:]
-                sb = sb[:-1]
-                sa = sa.split(', ')
-                sb = sb.split(', ')
-                for j in range(len(sa)):
-                    sa[j] = sa[j][1:]
-                    sa[j] = sa[j][:-1]
-                    sb[j] = sb[j][1:]
-                    sb[j] = sb[j][:-1]
-                self.nextWindow = FBPAns(sa, sb)
+            self.verticalLayout.addWidget(btn)
+            if result[i][0] == 'Масса вещества':
+                btn.clicked.connect(self.am)
+            elif result[i][
+                0] == 'Вывод формулы вещества по отношению масс элементов в ' \
+                      'данном веществе':
+                btn.clicked.connect(self.fbr)
+            elif result[i][
+                0] == 'Вывод формулы вещества по массовым долям элементов':
+                btn.clicked.connect(self.fbp)
+            self.btns[btn] = result[i]
+        # keys = list(self.btns.keys())
+        # for i in keys:
+        #     if self.btns[i][0] == 'Масса вещества':
+        #         bbb :QPushButton = i
+        #         bbb.clicked.connect(self.am)
+        #     elif self.btns[i][
+        #         0] == 'Вывод формулы вещества по отношению масс элементов в ' \
+        #               'данном веществе':
+        #         i.clicked.connect(self.fbr)
+        #     elif self.btns[i][
+        #         0] == 'Вывод формулы вещества по массовым долям элементов':
+        #         i.clicked.connect(self.fbp)
 
 
 class Mend(QWidget):
@@ -352,8 +373,6 @@ class AtomnayaMassaAnswer(QWidget):
                      'Cr': [52], 'Mo': [96], 'Bi': [209], 'C': [12],
                      'K': [39], 'He': [4],
                      'Li': [7], 'S': [32]}
-        self.base = sqlite3.connect("history.db")
-        cur = self.base.cursor()
         super().__init__()
         uic.loadUi('AMAns.ui', self)
         a = {}
@@ -369,7 +388,12 @@ class AtomnayaMassaAnswer(QWidget):
                 else:
                     a[arg[i][0]] += arg[i][1]
         self.arg = a
-        cur.execute("INSERT INTO History(operation, input1) VALUES('Масса вещества', ?)", (str(self.arg),)).fetchall()
+        self.base = sqlite3.connect("history.db")
+        cur = self.base.cursor()
+        cur.execute(
+            "INSERT INTO History(operation, input1, input2) VALUES('Масса вещества', ?, ?)",
+            (str(self.arg), s,))
+        self.base.commit()
         self.s = s
         self.initUI()
 
@@ -594,8 +618,7 @@ class FormulaByRatio2(QWidget):
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
             else:
-                if float(self.bt2.text() + text) == int(
-                        self.bt2.text() + text):
+                if float(self.bt2.text() + text) == float(self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
                     self.bt2.setText(str(float(self.bt2.text() + text)))
@@ -754,8 +777,7 @@ class FormulaByRatio3(QWidget):
             else:
                 if '.' in self.bt2.text():
                     self.bt2.setText(self.bt2.text() + text)
-                elif float(self.bt2.text() + text) == int(
-                        self.bt2.text() + text):
+                elif float(self.bt2.text() + text) == float(self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
                     self.bt2.setText(str(float(self.bt2.text() + text)))
@@ -1084,8 +1106,7 @@ class FormulaByRatio5(QWidget):
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
             else:
-                if float(self.bt2.text() + text) == int(
-                        self.bt2.text() + text):
+                if float(self.bt2.text() + text) == float(self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
                     self.bt2.setText(str(float(self.bt2.text() + text)))
@@ -1120,6 +1141,12 @@ class FormulaByRatio5(QWidget):
 
 class FBRAns(QWidget):
     def __init__(self, arg1, arg2):
+        self.base = sqlite3.connect("history.db")
+        cur = self.base.cursor()
+        cur.execute(
+            "INSERT INTO History(operation, input1, input2) VALUES('Вывод формулы вещества по отношению масс элементов в данном веществе', ?, ?)",
+            (str(arg1), str(arg2),))
+        self.base.commit()
         super().__init__()
         uic.loadUi('FBRAns.ui', self)
         self.mend = {'N': [14], 'Ra': [226], 'Rb': [85], 'Rh': [103],
@@ -1405,8 +1432,7 @@ class FormulaByPercents2(QWidget):
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
             else:
-                if float(self.bt2.text() + text) == int(
-                        self.bt2.text() + text):
+                if float(self.bt2.text() + text) == float(self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
                     self.bt2.setText(str(float(self.bt2.text() + text)))
@@ -1564,8 +1590,7 @@ class FormulaByPercents3(QWidget):
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
             else:
-                if float(self.bt2.text() + text) == int(
-                        self.bt2.text() + text):
+                if float(self.bt2.text() + text) == float(self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
                     self.bt2.setText(str(float(self.bt2.text() + text)))
@@ -1728,8 +1753,7 @@ class FormulaByPercents4(QWidget):
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
             else:
-                if float(self.bt2.text() + text) == int(
-                        self.bt2.text() + text):
+                if float(self.bt2.text() + text) == float(self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
                     self.bt2.setText(str(float(self.bt2.text() + text)))
@@ -1896,8 +1920,7 @@ class FormulaByPercents5(QWidget):
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
             else:
-                if float(self.bt2.text() + text) == int(
-                        self.bt2.text() + text):
+                if float(self.bt2.text() + text) == float(self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
                     self.bt2.setText(str(float(self.bt2.text() + text)))
@@ -1933,6 +1956,12 @@ class FormulaByPercents5(QWidget):
 
 class FBPAns(QWidget):
     def __init__(self, arg1, arg2):
+        self.base = sqlite3.connect("history.db")
+        cur = self.base.cursor()
+        cur.execute(
+            "INSERT INTO History(operation, input1, input2) VALUES('Вывод формулы вещества по массовым долям элементов', ?, ?)",
+            (str(arg1), str(arg2),))
+        self.base.commit()
         super().__init__()
         uic.loadUi('FBPAns.ui', self)
         self.mend = {'N': [14], 'Ra': [226], 'Rb': [85], 'Rh': [103],
@@ -2052,7 +2081,7 @@ class FBPAns(QWidget):
             self.ans.setText(ans)
 
 
-# faulthandler.enable()
+faulthandler.enable()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
