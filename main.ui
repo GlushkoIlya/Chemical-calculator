@@ -63,6 +63,11 @@
         </item>
         <item>
          <property name="text">
+          <string>Таблица Менделеева</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>История</string>
          </property>
         </item>

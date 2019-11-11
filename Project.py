@@ -6,8 +6,6 @@ from PyQt5.QtWidgets import QApplication, QPushButton, QWidget, QLabel, \
 from PyQt5.QtGui import QPixmap
 import sqlite3
 
-import faulthandler
-
 
 class Main(QMainWindow):
 
@@ -2081,7 +2079,7 @@ class FBPAns(QWidget):
             self.ans.setText(ans)
 
 
-faulthandler.enable()
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
