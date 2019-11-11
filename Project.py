@@ -616,7 +616,8 @@ class FormulaByRatio2(QWidget):
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
             else:
-                if float(self.bt2.text() + text) == float(self.bt2.text() + text) * 10 // 10:
+                if float(self.bt2.text() + text) == float(
+                        self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
                     self.bt2.setText(str(float(self.bt2.text() + text)))
@@ -775,7 +776,8 @@ class FormulaByRatio3(QWidget):
             else:
                 if '.' in self.bt2.text():
                     self.bt2.setText(self.bt2.text() + text)
-                elif float(self.bt2.text() + text) == float(self.bt2.text() + text) * 10 // 10:
+                elif float(self.bt2.text() + text) == float(
+                        self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
                     self.bt2.setText(str(float(self.bt2.text() + text)))
@@ -1104,7 +1106,8 @@ class FormulaByRatio5(QWidget):
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
             else:
-                if float(self.bt2.text() + text) == float(self.bt2.text() + text) * 10 // 10:
+                if float(self.bt2.text() + text) == float(
+                        self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
                     self.bt2.setText(str(float(self.bt2.text() + text)))
@@ -1430,7 +1433,8 @@ class FormulaByPercents2(QWidget):
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
             else:
-                if float(self.bt2.text() + text) == float(self.bt2.text() + text) * 10 // 10:
+                if float(self.bt2.text() + text) == float(
+                        self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
                     self.bt2.setText(str(float(self.bt2.text() + text)))
@@ -1588,7 +1592,8 @@ class FormulaByPercents3(QWidget):
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
             else:
-                if float(self.bt2.text() + text) == float(self.bt2.text() + text) * 10 // 10:
+                if float(self.bt2.text() + text) == float(
+                        self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
                     self.bt2.setText(str(float(self.bt2.text() + text)))
@@ -1751,7 +1756,8 @@ class FormulaByPercents4(QWidget):
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
             else:
-                if float(self.bt2.text() + text) == float(self.bt2.text() + text) * 10 // 10:
+                if float(self.bt2.text() + text) == float(
+                        self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
                     self.bt2.setText(str(float(self.bt2.text() + text)))
@@ -1918,7 +1924,8 @@ class FormulaByPercents5(QWidget):
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
             else:
-                if float(self.bt2.text() + text) == float(self.bt2.text() + text) * 10 // 10:
+                if float(self.bt2.text() + text) == float(
+                        self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
                     self.bt2.setText(str(float(self.bt2.text() + text)))
@@ -2077,8 +2084,6 @@ class FBPAns(QWidget):
                     elif str(res[i])[k] == '0':
                         ans += '\N{SUBSCRIPT ZERO}'
             self.ans.setText(ans)
-
-
 
 
 if __name__ == '__main__':
