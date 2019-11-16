@@ -111,18 +111,6 @@ class History(QWidget):
                 0] == 'Вывод формулы вещества по массовым долям элементов':
                 btn.clicked.connect(self.fbp)
             self.btns[btn] = result[i]
-        # keys = list(self.btns.keys())
-        # for i in keys:
-        #     if self.btns[i][0] == 'Масса вещества':
-        #         bbb :QPushButton = i
-        #         bbb.clicked.connect(self.am)
-        #     elif self.btns[i][
-        #         0] == 'Вывод формулы вещества по отношению масс элементов в ' \
-        #               'данном веществе':
-        #         i.clicked.connect(self.fbr)
-        #     elif self.btns[i][
-        #         0] == 'Вывод формулы вещества по массовым долям элементов':
-        #         i.clicked.connect(self.fbp)
 
 
 class Mend(QWidget):
@@ -131,8 +119,8 @@ class Mend(QWidget):
         self.initUI()
 
     def initUI(self):
-        SCREEN_SIZE = [1200, 800]
-        self.setGeometry(1200, 800, *SCREEN_SIZE)
+        screen_size = [1200, 800]
+        self.setGeometry(200, 200, *screen_size)
         self.setWindowTitle('Таблица Менделеева')
         self.pixmap = QPixmap('Mend.jpg')
         self.image = QLabel(self)
@@ -389,7 +377,8 @@ class AtomnayaMassaAnswer(QWidget):
         self.base = sqlite3.connect("history.db")
         cur = self.base.cursor()
         cur.execute(
-            "INSERT INTO History(operation, input1, input2) VALUES('Масса вещества', ?, ?)",
+            "INSERT INTO History(operation, input1, input2)"
+            " VALUES('Масса вещества', ?, ?)",
             (str(self.arg), s,))
         self.base.commit()
         self.s = s
@@ -421,7 +410,8 @@ class AtomnayaMassaAnswer(QWidget):
         for i in range(len(aa)):
             if i == 0:
                 tb1.setText(
-                    self.tb1.toPlainText() + str(aa[i][1]) + ' * Ar(' + str(
+                    self.tb1.toPlainText() + str(aa[i][1]) +
+                    ' * Ar(' + str(
                         aa[i][2]) + ')')
             else:
                 self.tb1.setText(
@@ -432,7 +422,8 @@ class AtomnayaMassaAnswer(QWidget):
         for i in range(len(aa)):
             if i == 0:
                 self.tb1.setText(
-                    self.tb1.toPlainText() + str(aa[i][1]) + ' * ' + str(
+                    self.tb1.toPlainText() + str(aa[i][1]) + ' * '
+                    + str(
                         aa[i][0]))
             else:
                 self.tb1.setText(
@@ -446,7 +437,8 @@ class AtomnayaMassaAnswer(QWidget):
                     self.tb1.toPlainText() + str(aa[i][1] * aa[i][0]))
             else:
                 self.tb1.setText(
-                    self.tb1.toPlainText() + ' + ' + str(aa[i][1] * aa[i][0]))
+                    self.tb1.toPlainText() + ' + ' + str(aa[i][1] *
+                                                         aa[i][0]))
         self.tb1.setText(self.tb1.toPlainText() + ' = ' + str(M))
         h = ''
         g = ''
@@ -462,8 +454,10 @@ class AtomnayaMassaAnswer(QWidget):
         self.tb2.setText(q + '= ' + g + '= ' + h)
         for i in range(len(aa)):
             self.tb3.setText(
-                self.tb3.toPlainText() + '\nw(' + str(aa[i][2]) + ') = ' + str(
-                    aa[i][0] * aa[i][1]) + ' / ' + str(M) + ' * 100% = ' +
+                self.tb3.toPlainText() + '\nw(' + str(aa[i][2]) +
+                ') = ' + str(
+                    aa[i][0] * aa[i][1]) + ' / ' + str(M) +
+                ' * 100% = ' +
                 str(aa[i][0] * aa[i][1] / M * 100 + 0.005)[:5] + '%')
 
 
@@ -611,7 +605,8 @@ class FormulaByRatio2(QWidget):
             bt = self.sender()
             text = str(bt.text())
             if (
-                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                    self.bt2.text() == '' or '.' in self.bt2.text())\
+                    and text == '.':
                 pass
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
@@ -769,7 +764,8 @@ class FormulaByRatio3(QWidget):
             bt = self.sender()
             text = str(bt.text())
             if (
-                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                    self.bt2.text() == '' or '.' in self.bt2.text())\
+                    and text == '.':
                 pass
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
@@ -934,7 +930,8 @@ class FormulaByRatio4(QWidget):
             bt = self.sender()
             text = str(bt.text())
             if (
-                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                    self.bt2.text() == '' or '.' in self.bt2.text())\
+                    and text == '.':
                 pass
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
@@ -1101,7 +1098,8 @@ class FormulaByRatio5(QWidget):
             bt = self.sender()
             text = str(bt.text())
             if (
-                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                    self.bt2.text() == '' or '.' in self.bt2.text())\
+                    and text == '.':
                 pass
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
@@ -1145,7 +1143,9 @@ class FBRAns(QWidget):
         self.base = sqlite3.connect("history.db")
         cur = self.base.cursor()
         cur.execute(
-            "INSERT INTO History(operation, input1, input2) VALUES('Вывод формулы вещества по отношению масс элементов в данном веществе', ?, ?)",
+            "INSERT INTO History(operation, input1, input2)"
+            " VALUES('Вывод формулы вещества по отношению масс"
+            " элементов в данном веществе', ?, ?)",
             (str(arg1), str(arg2),))
         self.base.commit()
         super().__init__()
@@ -1216,7 +1216,8 @@ class FBRAns(QWidget):
 
         for i in range(self.ln):
             lt.append(float(str(
-                float(self.cifr[i]) / self.mend[self.stuff[i]][0] + 0.0005)[
+                float(self.cifr[i]) / self.mend[self.stuff[i]][0]
+                + 0.0005)[
                             :5]))
         ltcopy = lt.copy()
         ltcopy.sort()
@@ -1255,7 +1256,8 @@ class FBRAns(QWidget):
             for i in range(self.ln):
                 ans += self.stuff[i]
                 for k in range(len(str(res[i]))):
-                    if str(res[i])[k] == '1' and len(str(res[i])) - k > 1 and \
+                    if str(res[i])[k] == '1' and len(str(res[i])) - k\
+                            > 1 and \
                             str(res[i])[k + 1] == '.':
                         pass
                     elif str(res[i])[k] == '.':
@@ -1428,7 +1430,8 @@ class FormulaByPercents2(QWidget):
             bt = self.sender()
             text = str(bt.text())
             if (
-                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                    self.bt2.text() == '' or '.' in self.bt2.text())\
+                    and text == '.':
                 pass
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
@@ -1587,7 +1590,8 @@ class FormulaByPercents3(QWidget):
             bt = self.sender()
             text = str(bt.text())
             if (
-                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                    self.bt2.text() == '' or '.' in self.bt2.text())\
+                    and text == '.':
                 pass
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
@@ -1596,7 +1600,8 @@ class FormulaByPercents3(QWidget):
                         self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
-                    self.bt2.setText(str(float(self.bt2.text() + text)))
+                    self.bt2.setText(str(float(self.bt2.text() +
+                                               text)))
 
     def do_next(self):
         self.cifr = [str(self.pb2.text()), str(self.pb4.text()),
@@ -1751,7 +1756,8 @@ class FormulaByPercents4(QWidget):
             bt = self.sender()
             text = str(bt.text())
             if (
-                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                    self.bt2.text() == '' or '.' in self.bt2.text())\
+                    and text == '.':
                 pass
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
@@ -1760,7 +1766,8 @@ class FormulaByPercents4(QWidget):
                         self.bt2.text() + text) * 10 // 10:
                     self.bt2.setText(str(int(self.bt2.text() + text)))
                 else:
-                    self.bt2.setText(str(float(self.bt2.text() + text)))
+                    self.bt2.setText(str(float(self.bt2.text() +
+                                               text)))
 
     def do_next(self):
         self.cifr = [str(self.pb2.text()), str(self.pb4.text()),
@@ -1919,7 +1926,8 @@ class FormulaByPercents5(QWidget):
             bt = self.sender()
             text = str(bt.text())
             if (
-                    self.bt2.text() == '' or '.' in self.bt2.text()) and text == '.':
+                    self.bt2.text() == '' or '.' in self.bt2.text()) and\
+                    text == '.':
                 pass
             elif text == '.':
                 self.bt2.setText(self.bt2.text() + text)
@@ -1964,7 +1972,8 @@ class FBPAns(QWidget):
         self.base = sqlite3.connect("history.db")
         cur = self.base.cursor()
         cur.execute(
-            "INSERT INTO History(operation, input1, input2) VALUES('Вывод формулы вещества по массовым долям элементов', ?, ?)",
+            "INSERT INTO History(operation, input1, input2) VALUES('Вывод"
+            " формулы вещества по массовым долям элементов', ?, ?)",
             (str(arg1), str(arg2),))
         self.base.commit()
         super().__init__()
